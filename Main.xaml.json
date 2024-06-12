@@ -42,18 +42,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_2_Connection0_Property0_Metadata",
-      "DisplayName": "Destination folder",
-      "Category": null,
-      "Tooltip": "Upload Files",
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": true,
-      "IsPrincipal": true,
-      "ArgumentType": 2,
-      "DataSourceItems": null
-    },
-    {
       "Name": "outTaxonomy",
       "DisplayName": "outTaxonomy",
       "Category": null,
@@ -66,19 +54,19 @@
       "DataSourceItems": null
     },
     {
-      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_3_Connection0",
-      "DisplayName": "UploadFilesConnections_3_Connection",
+      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_4_Connection0_Property0_Metadata",
+      "DisplayName": "Destination folder",
       "Category": null,
       "Tooltip": "Upload Files",
       "Placeholder": null,
-      "Widget": "Connection",
+      "Widget": null,
       "IsRequired": true,
       "IsPrincipal": true,
-      "ArgumentType": 1,
+      "ArgumentType": 2,
       "DataSourceItems": null
     },
     {
-      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_3_Connection0_Property1_Metadata",
+      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_4_Connection0_Property1_Metadata",
       "DisplayName": "Destination folder",
       "Category": null,
       "Tooltip": "Upload Files",
