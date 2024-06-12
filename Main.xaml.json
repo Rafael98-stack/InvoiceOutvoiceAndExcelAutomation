@@ -54,7 +54,31 @@
       "DataSourceItems": null
     },
     {
-      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_2_Connection0_Property1_Metadata",
+      "Name": "outTaxonomy",
+      "DisplayName": "outTaxonomy",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_3_Connection0",
+      "DisplayName": "UploadFilesConnections_3_Connection",
+      "Category": null,
+      "Tooltip": "Upload Files",
+      "Placeholder": null,
+      "Widget": "Connection",
+      "IsRequired": true,
+      "IsPrincipal": true,
+      "ArgumentType": 1,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "ExtractDataToExcel_xaml__UploadFilesConnections_3_Connection0_Property1_Metadata",
       "DisplayName": "Destination folder",
       "Category": null,
       "Tooltip": "Upload Files",

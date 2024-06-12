@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,2667.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:uascw="clr-namespace:UiPath.Activities.System.Compression.Workflow;assembly=UiPath.System.Activities" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:uascw="clr-namespace:UiPath.Activities.System.Compression.Workflow;assembly=UiPath.System.Activities" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="outTaxonomy" Type="OutArgument(p:DocumentTaxonomy)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1140,3674.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -51,6 +59,8 @@
       <x:String>UiPath.GSuite.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.Platform</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -128,9 +138,11 @@
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="704,3472" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="704,3609.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="Password" />
@@ -141,7 +153,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="ArubaEnter" CacheStrategy="None" DisplayName="Get Credential" FolderPath="rafaelcasapaojr@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="641.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[Password]" Username="[Username]" />
+    <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="641.6,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[OutTaxonomy]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="ArubaLog" CacheStrategy="None" DisplayName="Get Credential" FolderPath="rafael.casapao@acpsystem.eu's workspace" sap:VirtualizedContainerService.HintSize="641.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[Password]" Username="[Username]" />
     <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" IgnoreCRL="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[Username]" EnableSSL="True" FilterExpression="[&quot;SUBJECT &quot;&quot;Invoice - Outvoice&quot;&quot;&quot;]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="641.6,56.8" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_2" MailFolder="Inbox" MarkAsRead="False" Messages="[Mails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[Password]" Server="imaps.aruba.it" Top="30" UseOAuth="False" />
     <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="641.6,344" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Mails]">
       <ui:ForEach.Body>
@@ -218,7 +231,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1z29RbnyeDAKFO630YG6XekSd120pjyBb" ConflictResolution="AddSeparate" ConnectionId="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_1" SaveToFolderName="Invoices" UseConnectionService="True">
+                          <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1z29RbnyeDAKFO630YG6XekSd120pjyBb" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_1" SaveToFolderName="Invoices" UseConnectionService="True">
                             <uga:UploadFilesConnections.FilesBackup>
                               <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
                                 <usau:BackupSlot.BackupValues>
@@ -254,7 +267,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1D0c0hIBTUMG6FB5FIQqF4KnI0k9vmxk5" ConflictResolution="AddSeparate" ConnectionId="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_2" SaveToFolderName="Outvoices" UseConnectionService="True">
+                          <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1D0c0hIBTUMG6FB5FIQqF4KnI0k9vmxk5" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_2" SaveToFolderName="Outvoices" UseConnectionService="True">
                             <uga:UploadFilesConnections.FilesBackup>
                               <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
                                 <usau:BackupSlot.BackupValues>
@@ -300,7 +313,7 @@
     </ui:ForEachFolderX>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExtractDataToExcel - Invoke Workflow File (ExtractDataToExcel.xaml)" sap:VirtualizedContainerService.HintSize="641.6,206.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ExtractDataToExcel.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="p:DocumentTaxonomy" x:Key="inTaxonomy">[outTaxonomy]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="641.6,112.8" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="Allegati" Recursive="True" />

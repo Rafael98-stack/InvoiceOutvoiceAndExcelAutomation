@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExtractDataToExcel" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1130.4,2687.2" sap2010:WorkflowViewState.IdRef="ExtractDataToExcel_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtractDataToExcel" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p3="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p6="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p7="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:p8="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p9="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd2="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="inTaxonomy" Type="InArgument(p:DocumentTaxonomy)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1140,4072.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ExtractDataToExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -50,6 +58,23 @@
       <x:String>UiPath.GSuite.Drive.Models</x:String>
       <x:String>UiPath.GSuite.Activities</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.SmartData.PositionBasedExtraction.Storage</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
+      <x:String>UiPath.DU.Shared.Utils</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -119,6 +144,14 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -127,19 +160,20 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ExtractDataToExcel" sap:VirtualizedContainerService.HintSize="896,2622.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractDataToExcel" sap:VirtualizedContainerService.HintSize="770.4,4008" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="Dt_Envoice" />
-      <Variable x:TypeArguments="sd:DataTable" Name="Dt_Outvoice" />
+      <Variable x:TypeArguments="sd2:DataTable" Name="Dt_Envoice" />
+      <Variable x:TypeArguments="sd2:DataTable" Name="Dt_Outvoice" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[Dt_Envoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="833.6,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:BuildDataTable DataTable="[Dt_Outvoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="833.6,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="AllegatiUnzippati" sap:VirtualizedContainerService.HintSize="833.6,1588.8" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="NameAscFirst" SkipFoldersWithoutPermission="False">
+    <ui:BuildDataTable DataTable="[Dt_Envoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="708,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:BuildDataTable DataTable="[Dt_Outvoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="708,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="708,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[inTaxonomy]" />
+    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="AllegatiUnzippati" sap:VirtualizedContainerService.HintSize="708,3076" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="NameAscFirst" SkipFoldersWithoutPermission="False">
       <ui:ForEachFolderX.Body>
         <ActivityAction x:TypeArguments="si:DirectoryInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -148,13 +182,13 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="800,1293.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="674.4,2780.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.FullName]" sap:VirtualizedContainerService.HintSize="737.6,1207.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.FullName]" sap:VirtualizedContainerService.HintSize="612,2694.4" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
               <ui:ForEachFileX.Body>
                 <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                   <ActivityAction.Argument1>
@@ -163,186 +197,407 @@
                   <ActivityAction.Argument2>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                   </ActivityAction.Argument2>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,920.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="578.4,2408" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strText" />
+                      <Variable x:TypeArguments="p4:Document" Name="DOM" />
+                      <Variable x:TypeArguments="p9:ClassificationResult[]" Name="ClassificationResult" />
+                      <Variable x:TypeArguments="p9:ExtractionResult" Name="ExtractionResult" />
+                      <Variable x:TypeArguments="sd2:DataSet" Name="DataSet_Extraction" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application: ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)" sap:VirtualizedContainerService.HintSize="641.6,834.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="IfNotOpen" ScopeGuid="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" Version="V2">
-                      <uix:NApplicationCard.Body>
-                        <ActivityAction x:TypeArguments="x:Object">
+                    <p1:DigitizeDocument ApplyOcrMigrated="False" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="516,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+                      <p1:DigitizeDocument.OCREngine>
+                        <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
+                          <p2:UiPathDocumentOCR Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" Endpoint="https://du.uipath.com/ocr" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
+                            <p2:UiPathDocumentOCR.Image>
+                              <InArgument x:TypeArguments="sd:Image">
+                                <DelegateArgumentValue x:TypeArguments="sd:Image" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_1">
+                                  <DelegateInArgument x:TypeArguments="sd:Image" x:Name="__ReferenceID0" Name="Image" />
+                                </DelegateArgumentValue>
+                              </InArgument>
+                            </p2:UiPathDocumentOCR.Image>
+                            <p2:UiPathDocumentOCR.PredictionId>
+                              <InArgument x:TypeArguments="x:String">
+                                <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_2">
+                                  <DelegateInArgument x:TypeArguments="x:String" x:Name="__ReferenceID1" Name="PredictionId" />
+                                </DelegateArgumentValue>
+                              </InArgument>
+                            </p2:UiPathDocumentOCR.PredictionId>
+                          </p2:UiPathDocumentOCR>
+                        </ActivityFunc>
+                      </p1:DigitizeDocument.OCREngine>
+                    </p1:DigitizeDocument>
+                    <p3:ClassifyDocumentScope ClassificationResults="[ClassificationResult]" DisplayName="Classify Document Scope" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strText]" sap:VirtualizedContainerService.HintSize="516,595.2" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_2" Taxonomy="[inTaxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIb5d9c06939ea4113b35050ef25bae010&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;NoGroup.NoCategory.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;NoGroup.NoCategory.Outvoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;NoGroup.NoCategory.Outvoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UIb5d9c06939ea4113b35050ef25bae010&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UIb5d9c06939ea4113b35050ef25bae010&quot;:[]}}">
+                      <p3:ClassifyDocumentScope.Classifiers>
+                        <p3:IntelligentKeywordClassifier LearningData="{x:Null}" TimeoutMs="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" DisplayName="Intelligent Keyword Classifier" Endpoint="https://du.uipath.com/svc/intelligentkeywords" sap:VirtualizedContainerService.HintSize="223.2,236.8" sap2010:WorkflowViewState.IdRef="IntelligentKeywordClassifier_1" LearningFilePath="DocumentProcessing\LearningClassifier.json" PerformDocumentSplitting="True" PersistenceId="UIb5d9c06939ea4113b35050ef25bae010" SendDocumentsForAlgorithmImprovements="True" UsePageNumbers="False">
+                          <p3:IntelligentKeywordClassifier.ClassifierResult>
+                            <OutArgument x:TypeArguments="p5:ClassifierResult">
+                              <DelegateArgumentReference x:TypeArguments="p5:ClassifierResult">
+                                <DelegateOutArgument x:TypeArguments="p5:ClassifierResult" Name="ClassifierResult" />
+                              </DelegateArgumentReference>
+                            </OutArgument>
+                          </p3:IntelligentKeywordClassifier.ClassifierResult>
+                          <p3:IntelligentKeywordClassifier.DocumentObjectModel>
+                            <InArgument x:TypeArguments="p4:Document">
+                              <DelegateArgumentValue x:TypeArguments="p4:Document">
+                                <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p3:IntelligentKeywordClassifier.DocumentObjectModel>
+                          <p3:IntelligentKeywordClassifier.DocumentPath>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p3:IntelligentKeywordClassifier.DocumentPath>
+                          <p3:IntelligentKeywordClassifier.DocumentText>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p3:IntelligentKeywordClassifier.DocumentText>
+                          <p3:IntelligentKeywordClassifier.DocumentTypes>
+                            <InArgument x:TypeArguments="p5:ClassifierDocumentType[]">
+                              <DelegateArgumentValue x:TypeArguments="p5:ClassifierDocumentType[]">
+                                <DelegateInArgument x:TypeArguments="p5:ClassifierDocumentType[]" Name="DocumentTypes" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p3:IntelligentKeywordClassifier.DocumentTypes>
+                          <p3:IntelligentKeywordClassifier.PredictionId>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p3:IntelligentKeywordClassifier.PredictionId>
+                        </p3:IntelligentKeywordClassifier>
+                      </p3:ClassifyDocumentScope.Classifiers>
+                    </p3:ClassifyDocumentScope>
+                    <p6:DataExtractionScope DocumentTypeId="{x:Null}" ApplyGenerativeValidation="False" ClassificationResult="[ClassificationResult(0)]" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strText]" ExtractionResult="[ExtractionResult]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="516,577.6" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[inTaxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIeaad8ca3e7da4b229a106f1c96907852&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Invoice.Cliente&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.Cliente&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Invoice.Totale&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.Totale&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;NoGroup.NoCategory.Outvoice&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Outvoice.Totale&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.Totale&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}},&quot;UIddaac001c15942b0a0181b455252f33e&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Invoice.Cliente&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.Cliente&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Invoice.Totale&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Invoice.Totale&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;NoGroup.NoCategory.Outvoice&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;NoGroup.NoCategory.Outvoice.Totale&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Outvoice.Totale&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIddaac001c15942b0a0181b455252f33e&quot;:&quot;0&quot;,&quot;UIeaad8ca3e7da4b229a106f1c96907852&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIddaac001c15942b0a0181b455252f33e&quot;:[],&quot;UIeaad8ca3e7da4b229a106f1c96907852&quot;:[]}}">
+                      <p6:DataExtractionScope.Extractors>
+                        <p7:MachineLearningExtractor Configuration="{x:Null}" SelectedMLSkill="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" DisplayName="Machine Learning Extractor" Endpoint="https://du.uipath.com/ie/invoices" sap:VirtualizedContainerService.HintSize="223.2,219.2" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UIeaad8ca3e7da4b229a106f1c96907852" RetryOnFailure="True" Timeout="100000" UseServerSideOCR="False">
+                          <p7:MachineLearningExtractor.AvailableMLSkills>
+                            <scg:List x:TypeArguments="x:String" Capacity="0" />
+                          </p7:MachineLearningExtractor.AvailableMLSkills>
+                          <p7:MachineLearningExtractor.DocumentBounds>
+                            <InArgument x:TypeArguments="p9:ResultsDocumentBounds">
+                              <DelegateArgumentValue x:TypeArguments="p9:ResultsDocumentBounds">
+                                <DelegateInArgument x:TypeArguments="p9:ResultsDocumentBounds" Name="DocumentBounds" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.DocumentBounds>
+                          <p7:MachineLearningExtractor.DocumentObjectModel>
+                            <InArgument x:TypeArguments="p4:Document">
+                              <DelegateArgumentValue x:TypeArguments="p4:Document">
+                                <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.DocumentObjectModel>
+                          <p7:MachineLearningExtractor.DocumentPath>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.DocumentPath>
+                          <p7:MachineLearningExtractor.DocumentText>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.DocumentText>
+                          <p7:MachineLearningExtractor.ExtractorDocumentType>
+                            <InArgument x:TypeArguments="p8:ExtractorDocumentType">
+                              <DelegateArgumentValue x:TypeArguments="p8:ExtractorDocumentType">
+                                <DelegateInArgument x:TypeArguments="p8:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.ExtractorDocumentType>
+                          <p7:MachineLearningExtractor.ExtractorResult>
+                            <OutArgument x:TypeArguments="p8:ExtractorResult">
+                              <DelegateArgumentReference x:TypeArguments="p8:ExtractorResult">
+                                <DelegateOutArgument x:TypeArguments="p8:ExtractorResult" Name="ExtractorResult" />
+                              </DelegateArgumentReference>
+                            </OutArgument>
+                          </p7:MachineLearningExtractor.ExtractorResult>
+                          <p7:MachineLearningExtractor.PredictionId>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p7:MachineLearningExtractor.PredictionId>
+                        </p7:MachineLearningExtractor>
+                        <p6:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="223.2,219.2" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIddaac001c15942b0a0181b455252f33e" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Invoice&quot;,&quot;FormId&quot;:&quot;0ca2ca75&quot;,&quot;FormName&quot;:&quot;RetrieveInvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;,&quot;Box&quot;:[73.0061,139.4417,452.638,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Cliente&quot;,&quot;Box&quot;:[129.2209,52.5644,538.7853,17.5215]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Totale&quot;,&quot;Box&quot;:[367.9509,95.638,495.7117,21.1718]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Outvoice&quot;,&quot;FormId&quot;:&quot;8968d2b4&quot;,&quot;FormName&quot;:&quot;RetrieveOutvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;,&quot;Box&quot;:[74.4663,145.2822,443.1472,16.0613]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;,&quot;Box&quot;:[129.9509,53.2945,532.9448,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Totale&quot;,&quot;Box&quot;:[286.184,95.638,495.7117,17.5215]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+                          <p6:FormExtractor.DocumentBounds>
+                            <InArgument x:TypeArguments="p9:ResultsDocumentBounds">
+                              <DelegateArgumentValue x:TypeArguments="p9:ResultsDocumentBounds">
+                                <DelegateInArgument x:TypeArguments="p9:ResultsDocumentBounds" Name="DocumentBounds" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.DocumentBounds>
+                          <p6:FormExtractor.DocumentObjectModel>
+                            <InArgument x:TypeArguments="p4:Document">
+                              <DelegateArgumentValue x:TypeArguments="p4:Document">
+                                <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.DocumentObjectModel>
+                          <p6:FormExtractor.DocumentPath>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.DocumentPath>
+                          <p6:FormExtractor.DocumentText>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.DocumentText>
+                          <p6:FormExtractor.ExtractorDocumentType>
+                            <InArgument x:TypeArguments="p8:ExtractorDocumentType">
+                              <DelegateArgumentValue x:TypeArguments="p8:ExtractorDocumentType">
+                                <DelegateInArgument x:TypeArguments="p8:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.ExtractorDocumentType>
+                          <p6:FormExtractor.ExtractorResult>
+                            <OutArgument x:TypeArguments="p8:ExtractorResult">
+                              <DelegateArgumentReference x:TypeArguments="p8:ExtractorResult">
+                                <DelegateOutArgument x:TypeArguments="p8:ExtractorResult" Name="ExtractorResult" />
+                              </DelegateArgumentReference>
+                            </OutArgument>
+                          </p6:FormExtractor.ExtractorResult>
+                          <p6:FormExtractor.PredictionId>
+                            <InArgument x:TypeArguments="x:String">
+                              <DelegateArgumentValue x:TypeArguments="x:String">
+                                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                              </DelegateArgumentValue>
+                            </InArgument>
+                          </p6:FormExtractor.PredictionId>
+                        </p6:FormExtractor>
+                      </p6:DataExtractionScope.Extractors>
+                    </p6:DataExtractionScope>
+                    <p6:ExportExtractionResults DataSet="[DataSet_Extraction]" DisplayName="Export Extraction Results" ExtractionResult="[ExtractionResult]" sap:VirtualizedContainerService.HintSize="516,208.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
+                    <ui:ForEach x:TypeArguments="sd2:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each currentDataTable" sap:VirtualizedContainerService.HintSize="516,372" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DataSet_Extraction.Tables]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="sd2:DataTable">
                           <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                            <DelegateInArgument x:TypeArguments="sd2:DataTable" Name="currentDataTable" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="608,520" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="x:String" Name="ID_Fattura" />
-                              <Variable x:TypeArguments="x:String" Name="Data_Fattura" />
-                              <Variable x:TypeArguments="x:String" Name="Nome_Fornitore" />
-                              <Variable x:TypeArguments="x:String" Name="Luogo" />
-                              <Variable x:TypeArguments="x:String" Name="Totale" />
-                            </Sequence.Variables>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[CurrentFile.FullName.Contains(&quot;ingresso&quot;)]" sap:VirtualizedContainerService.HintSize="545.6,432" sap2010:WorkflowViewState.IdRef="If_1">
-                              <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,134.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Sequence Retrieve Envoice Data" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NGetText DisplayName="Get Text 'Numero Fattura'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[ID_Fattura]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="861, 254, 110, 21" CvType="AnyWordGroup" DesignTimeRectangle="861, 254, 110, 21" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="92a90162-e941-475e-84af-c18779d95084" ImageBase64="" InformativeScreenshot="3b1a718381442d79d3abb3592ac42a76.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                                              <uix:Target CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="689, 254, 165, 22" CvTextArgument="Numero Fattura:" CvType="Text" DesignTimeRectangle="689, 254, 165, 22" ElementType="Text" Guid="26233523-e773-45c8-8f89-4cc4513c23f6" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Data_Fattura]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="749, 307, 116, 22" CvType="AnyWordGroup" DesignTimeRectangle="749, 307, 116, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="41f7b056-fea5-4fa8-a77b-762e6ea749b9" ImageBase64="" InformativeScreenshot="be2d098c145a689e792f5445d7ebdcce.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="471dacea-35cf-484e-8230-98abdcd8ef0f" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Nome_Fornitore]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 361, 109, 22" CvType="AnyWordGroup" DesignTimeRectangle="689, 361, 109, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="aafa5b29-cd48-44de-b1ba-4d978ebb64a6" ImageBase64="" InformativeScreenshot="ff27120f557658dcc0dafae752c81a7b.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="356154a0-d316-4d47-b223-267abb4ddc57" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Luogo]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 415, 359, 26" CvType="AnyWordGroup" DesignTimeRectangle="687, 415, 359, 26" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="b074d38e-e4d6-40be-bcc8-b30a3bc6a6c9" InformativeScreenshot="35729bc85a4da15d9cc12b1715b9a3ad.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="f39f0644-1086-4045-aac3-1512cc169a70" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Totale'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Totale]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="1496, 820, 105, 22" CvType="AnyWordGroup" DesignTimeRectangle="1496, 820, 105, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="06909819-44f0-46ba-b488-9cb00811d696" ImageBase64="" InformativeScreenshot="64277482091788256e225736485ae5c2.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 820, 70, 21" CvTextArgument="Totale" CvType="Text" DesignTimeRectangle="687, 820, 70, 21" ElementType="Text" Guid="7bdd9152-6811-4630-8989-adf4082e7a7e" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ID_Fattura,Data_Fattura,Nome_Fornitore,Luogo,Totale}]" DataTable="[Dt_Envoice]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="387.2,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                                  </Sequence>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,134.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Sequence Retrieve Outvoice Data" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <uix:NGetText DisplayName="Get Text 'Numero Fattura'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[ID_Fattura]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="861, 254, 110, 21" CvType="AnyWordGroup" DesignTimeRectangle="861, 254, 110, 21" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="92a90162-e941-475e-84af-c18779d95084" ImageBase64="" InformativeScreenshot="3b1a718381442d79d3abb3592ac42a76.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                              <uix:Target CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="689, 254, 165, 22" CvTextArgument="Numero Fattura:" CvType="Text" DesignTimeRectangle="689, 254, 165, 22" ElementType="Text" Guid="26233523-e773-45c8-8f89-4cc4513c23f6" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_8" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Data_Fattura]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="749, 307, 116, 22" CvType="AnyWordGroup" DesignTimeRectangle="749, 307, 116, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="41f7b056-fea5-4fa8-a77b-762e6ea749b9" ImageBase64="" InformativeScreenshot="be2d098c145a689e792f5445d7ebdcce.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="471dacea-35cf-484e-8230-98abdcd8ef0f" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_9" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Nome_Fornitore]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 361, 109, 22" CvType="AnyWordGroup" DesignTimeRectangle="689, 361, 109, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="aafa5b29-cd48-44de-b1ba-4d978ebb64a6" ImageBase64="" InformativeScreenshot="ff27120f557658dcc0dafae752c81a7b.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="356154a0-d316-4d47-b223-267abb4ddc57" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_10" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Luogo]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 415, 359, 26" CvType="AnyWordGroup" DesignTimeRectangle="687, 415, 359, 26" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="b074d38e-e4d6-40be-bcc8-b30a3bc6a6c9" InformativeScreenshot="35729bc85a4da15d9cc12b1715b9a3ad.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="f39f0644-1086-4045-aac3-1512cc169a70" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <uix:NGetText DisplayName="Get Text 'Totale'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_11" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Totale]" Version="V3">
-                                      <uix:NGetText.Target>
-                                        <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="1496, 820, 105, 22" CvType="AnyWordGroup" DesignTimeRectangle="1496, 820, 105, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="06909819-44f0-46ba-b488-9cb00811d696" ImageBase64="" InformativeScreenshot="64277482091788256e225736485ae5c2.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
-                                          <uix:TargetAnchorable.Anchors>
-                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                              <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 820, 70, 21" CvTextArgument="Totale" CvType="Text" DesignTimeRectangle="687, 820, 70, 21" ElementType="Text" Guid="7bdd9152-6811-4630-8989-adf4082e7a7e" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                                            </scg:List>
-                                          </uix:TargetAnchorable.Anchors>
-                                        </uix:TargetAnchorable>
-                                      </uix:NGetText.Target>
-                                    </uix:NGetText>
-                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ID_Fattura,Data_Fattura,Nome_Fornitore,Luogo,Totale}]" DataTable="[Dt_Outvoice]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="387.2,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
-                                  </Sequence>
-                                </Sequence>
-                              </If.Else>
-                            </If>
+                            <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[currentDataTable]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_4" SheetName="Sheet1" WorkbookPath="[&quot;Extracted\&quot;+&quot;Extraction&quot;+CurrentFile.Name+&quot;.xlsx&quot;]" />
                           </Sequence>
                         </ActivityAction>
-                      </uix:NApplicationCard.Body>
-                      <uix:NApplicationCard.TargetApp>
-                        <uix:TargetApp Area="-9, -9, 1938, 1048" Arguments="[CurrentFile.FullName]" FilePath="C:\Program Files\Adobe\Acrobat DC\Acrobat\acrobat.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAUJSURBVFhH5Zh/TFZVGMdBSyxTjPghFeW0cpq0LF1SEZUx0kLWgpptTocmIAjjh0grxtogGDCGMn4M3pZikRosm9WIaghhq/FD1GACawVCvCAMkHvvOZf3fb90zkXbet/zmuC92dYfnz/u7nOf57NzzznPuddlenraBYADNpvNMET1nCEWtFpdrUcqNqlLXE4zphjQgVFGvrWixM9msTjWdIJQ0FJ6aCNLZlaXe4C8FgJlbySUuN1zJ2qHjQT4U+rlJrO8JktRwTL7ms4QCrIk36o+d0LZHweppwvSlSuQJGnujI3ZpKYGVXkvZYouv0dl+Y9b3n/nhiSdCVK6fhWks63ignPFbIaSlgDVY75F9VxwypKR9o+SzgRBN20UF9EBJf5tUHdXC6tTbTmY522zWh0crnFLBDnK/n2g3nfwBfih1VSyki1MBw/OLROU+i+B7NkO6rWQz8mTbCR97D04+giOjUE+8QnIvl2Q674Sx9gzOQmp4wKUiFegurvybajA3oOjjyBb6SRiM8jLgSCvviCOEcEk5eNHoT68jAtK9h4cXQTl72pBt4VB/uwYVL+lUE5/L4wTcqkP9Nl12mZu78HRZwR/qAd9nY1g3C6o9y2GUv2pOM4JvJaxgmzC07CXQFf7gXcfeZb7p/GCDCXjANjmC7phNaTRUWGMM/4dQbavqR63gW4JEt6/HsYL9lwEDX6adYd5oA96QPmGbTWz6N/GCjIRudIEdYUXSOA6ELaaaTB7trEe0sVOSBfOQfrlPKS+XqfSxgr2/s6OU9uhLp0HEr8HSnoqVN9FIGxEyY43QHa/BRK5DQrrGnLNMUiXhx1yGCfIR++LatCHfLQCfBXTzc9pwiT0RdCV3iAxOyEfOwoa+ARo0JPCFW6M4Pl2KDvfBPVzh+q1AEpyrNa6tFc5ZIb0268g2Rmga5g0e/3U0w00JBAyj7HLpa/gyGUoB/NAVt0L8tSjWh8lEVtm5psonlPPOstPP0Ia/EN4Xz/B8XHIZUUzPTc/C+SZx0EfWwH5y5OOsbNAN0F5aAgkKRYkLBiEzSey5gHIR0yauH3sbNB1BKWvT4EkREFhohLf7yYmHONmiX6CHC7E5qE0OsKOSzf5MXUVfQUN4P8pWFFRgZycHFRWVqK7uxs1NTXadXl5OVpaWtDb2wuTyYTs7GwUFhaip6dHmIdjiGBISAgKCgqQlpaG/Px8REZGIikpCSUlJYiKikJVVRW2bt2qyR0+fFgTFuXhGCIYHByMhoYG1NbWIi4uDuHh4SgtLcXg4CBSU1ORmJiI0NBQ9PX1YYItrEn+kSTIwzFMMCsrCykpKcjLy9NGsKysDMPDw0hPT0dsbKwmGBQUhIiICPT39wvzcAwT5FLFxcXo6upCTEwMioqK0N7ejujoaGRmZmqCTU1N6OjoEOa4hmGCjY2Nf13Hx8drI5WcnIzc3FzU1dUhLCwMAwMDf3tOhCGCzc3NMJvZqeXqdWdnJ86cOYPW1lZNamRkBG1tbRi/gTY4N8HnN8x0DEFCXenpBg3wn7XgKH3EF/LHH0EaYJP7Zv8PiuA52blR/vwEVP65usRl3N6D40wwlp3zptS1y0H2RkIuLoRcUaIvpQehHEgACVgL9e75/C/Xu/YeHKGgpezQQtXL7QN6/5JhPvSG4nuXWfW8PZ/VdLf34AgF+b86a1vzIuu5s/7Wlp/XG0p721pWa/F1/w/+d5l2+ROBiPgPwy36dgAAAABJRU5ErkJggg==" InformativeScreenshot="2c5a55a4e906b3c768322f16e174a7c2.png" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" Title="ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)" />
-                      </uix:NApplicationCard.TargetApp>
-                    </uix:NApplicationCard>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="516,236" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application: ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="IfNotOpen" ScopeGuid="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" Version="V2">
+                            <uix:NApplicationCard.Body>
+                              <ActivityAction x:TypeArguments="x:Object">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="608,520" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="ID_Fattura" />
+                                    <Variable x:TypeArguments="x:String" Name="Data_Fattura" />
+                                    <Variable x:TypeArguments="x:String" Name="Nome_Fornitore" />
+                                    <Variable x:TypeArguments="x:String" Name="Luogo" />
+                                    <Variable x:TypeArguments="x:String" Name="Totale" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If Condition="[CurrentFile.FullName.Contains(&quot;ingresso&quot;)]" sap:VirtualizedContainerService.HintSize="545.6,432" sap2010:WorkflowViewState.IdRef="If_1">
+                                    <If.Then>
+                                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,134.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Sequence DisplayName="Sequence Retrieve Envoice Data" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uix:NGetText DisplayName="Get Text 'Numero Fattura'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[ID_Fattura]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="861, 254, 110, 21" CvType="AnyWordGroup" DesignTimeRectangle="861, 254, 110, 21" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="92a90162-e941-475e-84af-c18779d95084" ImageBase64="" InformativeScreenshot="3b1a718381442d79d3abb3592ac42a76.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="689, 254, 165, 22" CvTextArgument="Numero Fattura:" CvType="Text" DesignTimeRectangle="689, 254, 165, 22" ElementType="Text" Guid="26233523-e773-45c8-8f89-4cc4513c23f6" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Data_Fattura]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="749, 307, 116, 22" CvType="AnyWordGroup" DesignTimeRectangle="749, 307, 116, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="41f7b056-fea5-4fa8-a77b-762e6ea749b9" ImageBase64="" InformativeScreenshot="be2d098c145a689e792f5445d7ebdcce.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="471dacea-35cf-484e-8230-98abdcd8ef0f" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Nome_Fornitore]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 361, 109, 22" CvType="AnyWordGroup" DesignTimeRectangle="689, 361, 109, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="aafa5b29-cd48-44de-b1ba-4d978ebb64a6" ImageBase64="" InformativeScreenshot="ff27120f557658dcc0dafae752c81a7b.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="356154a0-d316-4d47-b223-267abb4ddc57" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Luogo]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 415, 359, 26" CvType="AnyWordGroup" DesignTimeRectangle="687, 415, 359, 26" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="b074d38e-e4d6-40be-bcc8-b30a3bc6a6c9" InformativeScreenshot="35729bc85a4da15d9cc12b1715b9a3ad.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="f39f0644-1086-4045-aac3-1512cc169a70" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Totale'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" TextString="[Totale]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="1496, 820, 105, 22" CvType="AnyWordGroup" DesignTimeRectangle="1496, 820, 105, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="06909819-44f0-46ba-b488-9cb00811d696" ImageBase64="" InformativeScreenshot="64277482091788256e225736485ae5c2.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 820, 70, 21" CvTextArgument="Totale" CvType="Text" DesignTimeRectangle="687, 820, 70, 21" ElementType="Text" Guid="7bdd9152-6811-4630-8989-adf4082e7a7e" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ID_Fattura,Data_Fattura,Nome_Fornitore,Luogo,Totale}]" DataTable="[Dt_Envoice]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="387.2,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                        </Sequence>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,134.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Sequence DisplayName="Sequence Retrieve Outvoice Data" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uix:NGetText DisplayName="Get Text 'Numero Fattura'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[ID_Fattura]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="861, 254, 110, 21" CvType="AnyWordGroup" DesignTimeRectangle="861, 254, 110, 21" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="92a90162-e941-475e-84af-c18779d95084" ImageBase64="" InformativeScreenshot="3b1a718381442d79d3abb3592ac42a76.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="e3ca0e49-94eb-4eaf-ae07-9d2a1afbe605" CvTextArea="689, 254, 165, 22" CvTextArgument="Numero Fattura:" CvType="Text" DesignTimeRectangle="689, 254, 165, 22" ElementType="Text" Guid="26233523-e773-45c8-8f89-4cc4513c23f6" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_8" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Data_Fattura]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="749, 307, 116, 22" CvType="AnyWordGroup" DesignTimeRectangle="749, 307, 116, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="41f7b056-fea5-4fa8-a77b-762e6ea749b9" ImageBase64="" InformativeScreenshot="be2d098c145a689e792f5445d7ebdcce.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="471dacea-35cf-484e-8230-98abdcd8ef0f" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_9" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Nome_Fornitore]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 361, 109, 22" CvType="AnyWordGroup" DesignTimeRectangle="689, 361, 109, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="aafa5b29-cd48-44de-b1ba-4d978ebb64a6" ImageBase64="" InformativeScreenshot="ff27120f557658dcc0dafae752c81a7b.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="356154a0-d316-4d47-b223-267abb4ddc57" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Data'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_10" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Luogo]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 415, 359, 26" CvType="AnyWordGroup" DesignTimeRectangle="687, 415, 359, 26" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="b074d38e-e4d6-40be-bcc8-b30a3bc6a6c9" InformativeScreenshot="35729bc85a4da15d9cc12b1715b9a3ad.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="689, 307, 55, 21" CvTextArgument="Data:" CvType="Text" DesignTimeRectangle="689, 307, 55, 21" ElementType="Text" Guid="f39f0644-1086-4045-aac3-1512cc169a70" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <uix:NGetText DisplayName="Get Text 'Totale'" sap:VirtualizedContainerService.HintSize="387.2,189.6" sap2010:WorkflowViewState.IdRef="NGetText_11" ScopeIdentifier="8f0fce5a-8afd-424d-a7ba-87aad7c4db7e" ScrapingOptions="None" TextString="[Totale]" Version="V3">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="1496, 820, 105, 22" CvType="AnyWordGroup" DesignTimeRectangle="1496, 820, 105, 22" DesignTimeScaleFactor="1.25" ElementType="Text" Guid="06909819-44f0-46ba-b488-9cb00811d696" ImageBase64="" InformativeScreenshot="64277482091788256e225736485ae5c2.png" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_*.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V3" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CVScreenId="92339a06-0546-460f-951e-68f579e026b8" CvTextArea="687, 820, 70, 21" CvTextArgument="Totale" CvType="Text" DesignTimeRectangle="687, 820, 70, 21" ElementType="Text" Guid="7bdd9152-6811-4630-8989-adf4082e7a7e" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:NGetText.Target>
+                                          </uix:NGetText>
+                                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ID_Fattura,Data_Fattura,Nome_Fornitore,Luogo,Totale}]" DataTable="[Dt_Outvoice]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="387.2,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                                        </Sequence>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </uix:NApplicationCard.Body>
+                            <uix:NApplicationCard.TargetApp>
+                              <uix:TargetApp Area="-9, -9, 1938, 1048" Arguments="[CurrentFile.FullName]" FilePath="C:\Program Files\Adobe\Acrobat DC\Acrobat\acrobat.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAUJSURBVFhH5Zh/TFZVGMdBSyxTjPghFeW0cpq0LF1SEZUx0kLWgpptTocmIAjjh0grxtogGDCGMn4M3pZikRosm9WIaghhq/FD1GACawVCvCAMkHvvOZf3fb90zkXbet/zmuC92dYfnz/u7nOf57NzzznPuddlenraBYADNpvNMET1nCEWtFpdrUcqNqlLXE4zphjQgVFGvrWixM9msTjWdIJQ0FJ6aCNLZlaXe4C8FgJlbySUuN1zJ2qHjQT4U+rlJrO8JktRwTL7ms4QCrIk36o+d0LZHweppwvSlSuQJGnujI3ZpKYGVXkvZYouv0dl+Y9b3n/nhiSdCVK6fhWks63ignPFbIaSlgDVY75F9VxwypKR9o+SzgRBN20UF9EBJf5tUHdXC6tTbTmY522zWh0crnFLBDnK/n2g3nfwBfih1VSyki1MBw/OLROU+i+B7NkO6rWQz8mTbCR97D04+giOjUE+8QnIvl2Q674Sx9gzOQmp4wKUiFegurvybajA3oOjjyBb6SRiM8jLgSCvviCOEcEk5eNHoT68jAtK9h4cXQTl72pBt4VB/uwYVL+lUE5/L4wTcqkP9Nl12mZu78HRZwR/qAd9nY1g3C6o9y2GUv2pOM4JvJaxgmzC07CXQFf7gXcfeZb7p/GCDCXjANjmC7phNaTRUWGMM/4dQbavqR63gW4JEt6/HsYL9lwEDX6adYd5oA96QPmGbTWz6N/GCjIRudIEdYUXSOA6ELaaaTB7trEe0sVOSBfOQfrlPKS+XqfSxgr2/s6OU9uhLp0HEr8HSnoqVN9FIGxEyY43QHa/BRK5DQrrGnLNMUiXhx1yGCfIR++LatCHfLQCfBXTzc9pwiT0RdCV3iAxOyEfOwoa+ARo0JPCFW6M4Pl2KDvfBPVzh+q1AEpyrNa6tFc5ZIb0268g2Rmga5g0e/3U0w00JBAyj7HLpa/gyGUoB/NAVt0L8tSjWh8lEVtm5psonlPPOstPP0Ia/EN4Xz/B8XHIZUUzPTc/C+SZx0EfWwH5y5OOsbNAN0F5aAgkKRYkLBiEzSey5gHIR0yauH3sbNB1BKWvT4EkREFhohLf7yYmHONmiX6CHC7E5qE0OsKOSzf5MXUVfQUN4P8pWFFRgZycHFRWVqK7uxs1NTXadXl5OVpaWtDb2wuTyYTs7GwUFhaip6dHmIdjiGBISAgKCgqQlpaG/Px8REZGIikpCSUlJYiKikJVVRW2bt2qyR0+fFgTFuXhGCIYHByMhoYG1NbWIi4uDuHh4SgtLcXg4CBSU1ORmJiI0NBQ9PX1YYItrEn+kSTIwzFMMCsrCykpKcjLy9NGsKysDMPDw0hPT0dsbKwmGBQUhIiICPT39wvzcAwT5FLFxcXo6upCTEwMioqK0N7ejujoaGRmZmqCTU1N6OjoEOa4hmGCjY2Nf13Hx8drI5WcnIzc3FzU1dUhLCwMAwMDf3tOhCGCzc3NMJvZqeXqdWdnJ86cOYPW1lZNamRkBG1tbRi/gTY4N8HnN8x0DEFCXenpBg3wn7XgKH3EF/LHH0EaYJP7Zv8PiuA52blR/vwEVP65usRl3N6D40wwlp3zptS1y0H2RkIuLoRcUaIvpQehHEgACVgL9e75/C/Xu/YeHKGgpezQQtXL7QN6/5JhPvSG4nuXWfW8PZ/VdLf34AgF+b86a1vzIuu5s/7Wlp/XG0p721pWa/F1/w/+d5l2+ROBiPgPwy36dgAAAABJRU5ErkJggg==" InformativeScreenshot="2c5a55a4e906b3c768322f16e174a7c2.png" Selector="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)' /&gt;" Title="ingresso_fattura_1.pdf - Adobe Acrobat Reader (64-bit)" />
+                            </uix:NApplicationCard.TargetApp>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NApplicationCard>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
                   </Sequence>
                 </ActivityAction>
               </ui:ForEachFileX.Body>
@@ -351,9 +606,26 @@
         </ActivityAction>
       </ui:ForEachFolderX.Body>
     </ui:ForEachFolderX>
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[Dt_Envoice]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="833.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Envoices\Envoice.xlsx" />
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[Dt_Outvoice]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="833.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet1" WorkbookPath="Outvoices\Outvoice.xlsx" />
-    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConflictResolution="AddSeparate" ConnectionId="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="833.6,236.8" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_2" SaveToFolderName="Invoices .xlsx" UseConnectionService="True">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="708,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[Dt_Envoice]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Envoices\Envoice.xlsx" />
+          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[Dt_Outvoice]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet1" WorkbookPath="Outvoices\Outvoice.xlsx" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID2}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="708,236.8" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_4" SaveToFolderName="Invoices .xlsx" UseConnectionService="True">
       <uga:UploadFilesConnections.FilesBackup>
         <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
           <usau:BackupSlot.BackupValues>
@@ -371,7 +643,7 @@
       <uga:UploadFilesConnections.Folder>
         <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Invoices .xlsx" FullPathHint="Invoices .xlsx" InputMode="Browse">
           <ugam:DriveItemArgument.Backup>
-            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
               <usau:BackupSlot.BackupValues>
                 <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
               </usau:BackupSlot.BackupValues>
@@ -380,7 +652,7 @@
         </ugam:DriveItemArgument>
       </uga:UploadFilesConnections.Folder>
     </uga:UploadFilesConnections>
-    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConflictResolution="AddSeparate" ConnectionId="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="833.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_3" SaveToFolderName="Outvoices .xlsx" UseConnectionService="True">
+    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID3}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="708,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_3" SaveToFolderName="Outvoices .xlsx" UseConnectionService="True">
       <uga:UploadFilesConnections.FilesBackup>
         <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
           <usau:BackupSlot.BackupValues>
@@ -398,7 +670,7 @@
       <uga:UploadFilesConnections.Folder>
         <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Outvoices .xlsx" FullPathHint="Outvoices .xlsx" InputMode="Browse">
           <ugam:DriveItemArgument.Backup>
-            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="Browse">
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="Browse">
               <usau:BackupSlot.BackupValues>
                 <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
               </usau:BackupSlot.BackupValues>
