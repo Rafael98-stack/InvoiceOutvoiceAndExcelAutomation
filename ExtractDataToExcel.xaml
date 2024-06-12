@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1140,4072.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1140,5175.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractDataToExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -75,6 +75,8 @@
       <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
       <x:String>UiPath.DU.Shared.Utils</x:String>
       <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.ValidationStation</x:String>
+      <x:String>UiPath.Platform</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -152,6 +154,7 @@
       <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -160,7 +163,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ExtractDataToExcel" sap:VirtualizedContainerService.HintSize="770.4,4008" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractDataToExcel" sap:VirtualizedContainerService.HintSize="770.4,5110.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd2:DataTable" Name="Dt_Envoice" />
       <Variable x:TypeArguments="sd2:DataTable" Name="Dt_Outvoice" />
@@ -173,7 +176,7 @@
     <ui:BuildDataTable DataTable="[Dt_Envoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="708,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:BuildDataTable DataTable="[Dt_Outvoice]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="708,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID_x0020_Fattura&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Data&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Fornitore&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Luogo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Totale&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="708,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[inTaxonomy]" />
-    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="AllegatiUnzippati" sap:VirtualizedContainerService.HintSize="708,3076" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="NameAscFirst" SkipFoldersWithoutPermission="False">
+    <ui:ForEachFolderX DisplayName="For Each Folder in Folder" Folder="AllegatiUnzippati" sap:VirtualizedContainerService.HintSize="708,3480" sap2010:WorkflowViewState.IdRef="ForEachFolderX_1" IncludeSubFolders="False" OrderBy="NameAscFirst" SkipFoldersWithoutPermission="False">
       <ui:ForEachFolderX.Body>
         <ActivityAction x:TypeArguments="si:DirectoryInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -182,13 +185,13 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="674.4,2780.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="674.4,3184.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.FullName]" sap:VirtualizedContainerService.HintSize="612,2694.4" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[CurrentFolder.FullName]" sap:VirtualizedContainerService.HintSize="612,3098.4" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
               <ui:ForEachFileX.Body>
                 <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                   <ActivityAction.Argument1>
@@ -197,13 +200,14 @@
                   <ActivityAction.Argument2>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                   </ActivityAction.Argument2>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="578.4,2408" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="578.4,2812" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="strText" />
                       <Variable x:TypeArguments="p4:Document" Name="DOM" />
                       <Variable x:TypeArguments="p9:ClassificationResult[]" Name="ClassificationResult" />
                       <Variable x:TypeArguments="p9:ExtractionResult" Name="ExtractionResult" />
                       <Variable x:TypeArguments="sd2:DataSet" Name="DataSet_Extraction" />
+                      <Variable x:TypeArguments="p9:ExtractionResult" Name="Validated" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -336,7 +340,7 @@
                             </InArgument>
                           </p7:MachineLearningExtractor.PredictionId>
                         </p7:MachineLearningExtractor>
-                        <p6:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="223.2,219.2" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIddaac001c15942b0a0181b455252f33e" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Invoice&quot;,&quot;FormId&quot;:&quot;0ca2ca75&quot;,&quot;FormName&quot;:&quot;RetrieveInvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;,&quot;Box&quot;:[73.0061,139.4417,452.638,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Cliente&quot;,&quot;Box&quot;:[129.2209,52.5644,538.7853,17.5215]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Totale&quot;,&quot;Box&quot;:[367.9509,95.638,495.7117,21.1718]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Outvoice&quot;,&quot;FormId&quot;:&quot;8968d2b4&quot;,&quot;FormName&quot;:&quot;RetrieveOutvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;,&quot;Box&quot;:[74.4663,145.2822,443.1472,16.0613]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;,&quot;Box&quot;:[129.9509,53.2945,532.9448,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Totale&quot;,&quot;Box&quot;:[286.184,95.638,495.7117,17.5215]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+                        <p6:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="IRBbOXIWjqJAclUHEMRs1ynQedk7Gl13gj+veetshC1zinvGSdUngC8P1GsKRYJcnfE3M+RAyBijtJzYqv8Hdw==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="223.2,219.2" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIddaac001c15942b0a0181b455252f33e" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Invoice&quot;,&quot;FormId&quot;:&quot;0ca2ca75&quot;,&quot;FormName&quot;:&quot;RetrieveInvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[371.13,56.69,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.IdFattura&quot;,&quot;Box&quot;:[73.0061,139.4417,452.638,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Cliente&quot;,&quot;Box&quot;:[129.2209,52.5644,538.7853,17.5215]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Invoice.Totale&quot;,&quot;Box&quot;:[367.9509,475.2699,64.2454,18.9816]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Outvoice&quot;,&quot;FormId&quot;:&quot;8968d2b4&quot;,&quot;FormName&quot;:&quot;RetrieveOutvoice&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,595.0,841.0],&quot;SkewAngle&quot;:0.0,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Descrizione&quot;,&quot;Box&quot;:[201.05,56.69,67.36,14.28]},{&quot;Text&quot;:&quot;Quantità&quot;,&quot;Box&quot;:[201.05,283.46,48.67,14.28]},{&quot;Text&quot;:&quot;Prezzo&quot;,&quot;Box&quot;:[201.05,368.5,38.68,14.28]},{&quot;Text&quot;:&quot;Unitario&quot;,&quot;Box&quot;:[201.05,410.52,45.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[201.05,481.89,35.34,14.28]},{&quot;Text&quot;:&quot;Totale&quot;,&quot;Box&quot;:[286.09,56.69,35.34,14.28]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.IdFattura&quot;,&quot;Box&quot;:[74.4663,145.2822,443.1472,16.0613]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Cliente&quot;,&quot;Box&quot;:[129.9509,53.2945,532.9448,16.7914]},{&quot;Field&quot;:&quot;NoGroup.NoCategory.Outvoice.Totale&quot;,&quot;Box&quot;:[284.7239,475.2699,66.4356,18.2515]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
                           <p6:FormExtractor.DocumentBounds>
                             <InArgument x:TypeArguments="p9:ResultsDocumentBounds">
                               <DelegateArgumentValue x:TypeArguments="p9:ResultsDocumentBounds">
@@ -389,6 +393,7 @@
                         </p6:FormExtractor>
                       </p6:DataExtractionScope.Extractors>
                     </p6:DataExtractionScope>
+                    <p1:PresentValidationStation FieldsValidationConfidence="{x:Null}" AutomaticExtractionResults="[ExtractionResult]" DisplayName="Present Validation Station" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strText]" sap:VirtualizedContainerService.HintSize="516,404" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" ShowOnlyRelevantPageRange="False" Taxonomy="[inTaxonomy]" ValidatedExtractionResults="[ExtractionResult]" />
                     <p6:ExportExtractionResults DataSet="[DataSet_Extraction]" DisplayName="Export Extraction Results" ExtractionResult="[ExtractionResult]" sap:VirtualizedContainerService.HintSize="516,208.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
                     <ui:ForEach x:TypeArguments="sd2:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each currentDataTable" sap:VirtualizedContainerService.HintSize="516,372" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DataSet_Extraction.Tables]">
                       <ui:ForEach.Body>
@@ -625,59 +630,98 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID2}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="708,236.8" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_4" SaveToFolderName="Invoices .xlsx" UseConnectionService="True">
-      <uga:UploadFilesConnections.FilesBackup>
-        <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
-          <usau:BackupSlot.BackupValues>
-            <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
-              <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[CurrentFile]</InArgument>
-            </scg:List>
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </uga:UploadFilesConnections.FilesBackup>
-      <uga:UploadFilesConnections.FilesList>
-        <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
-          <InArgument x:TypeArguments="upr:IResource">[LocalResource.FromPath("Envoices\\Envoice.xlsx")]</InArgument>
-        </scg:List>
-      </uga:UploadFilesConnections.FilesList>
-      <uga:UploadFilesConnections.Folder>
-        <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Invoices .xlsx" FullPathHint="Invoices .xlsx" InputMode="Browse">
-          <ugam:DriveItemArgument.Backup>
-            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
-              <usau:BackupSlot.BackupValues>
-                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-              </usau:BackupSlot.BackupValues>
-            </usau:BackupSlot>
-          </ugam:DriveItemArgument.Backup>
-        </ugam:DriveItemArgument>
-      </uga:UploadFilesConnections.Folder>
-    </uga:UploadFilesConnections>
-    <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID3}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="708,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_3" SaveToFolderName="Outvoices .xlsx" UseConnectionService="True">
-      <uga:UploadFilesConnections.FilesBackup>
-        <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
-          <usau:BackupSlot.BackupValues>
-            <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
-              <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[CurrentFile]</InArgument>
-            </scg:List>
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </uga:UploadFilesConnections.FilesBackup>
-      <uga:UploadFilesConnections.FilesList>
-        <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
-          <InArgument x:TypeArguments="upr:IResource">[LocalResource.FromPath("Outvoices\\Outvoice.xlsx")]</InArgument>
-        </scg:List>
-      </uga:UploadFilesConnections.FilesList>
-      <uga:UploadFilesConnections.Folder>
-        <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Outvoices .xlsx" FullPathHint="Outvoices .xlsx" InputMode="Browse">
-          <ugam:DriveItemArgument.Backup>
-            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="Browse">
-              <usau:BackupSlot.BackupValues>
-                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-              </usau:BackupSlot.BackupValues>
-            </usau:BackupSlot>
-          </ugam:DriveItemArgument.Backup>
-        </ugam:DriveItemArgument>
-      </uga:UploadFilesConnections.Folder>
-    </uga:UploadFilesConnections>
+    <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="Extracted" sap:VirtualizedContainerService.HintSize="708,1163.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+      <ui:ForEachFileX.Body>
+        <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+          <ActivityAction.Argument1>
+            <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+          </ActivityAction.Argument1>
+          <ActivityAction.Argument2>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+          </ActivityAction.Argument2>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="512,876.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[CurrentFile.FullName.Contains(&quot;ingresso&quot;)]" sap:VirtualizedContainerService.HintSize="449.6,790.4" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,314.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID2}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_4" SaveToFolderName="Invoices .xlsx" UseConnectionService="True">
+                    <uga:UploadFilesConnections.FilesBackup>
+                      <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
+                            <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[CurrentFile]</InArgument>
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </uga:UploadFilesConnections.FilesBackup>
+                    <uga:UploadFilesConnections.FilesList>
+                      <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+                        <InArgument x:TypeArguments="upr:IResource">[LocalResource.FromPath(CurrentFile.FullName)]</InArgument>
+                      </scg:List>
+                    </uga:UploadFilesConnections.FilesList>
+                    <uga:UploadFilesConnections.Folder>
+                      <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/184I17ZPuUjdwu9Dq3jHfLl_IIo6eviX_" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Invoices .xlsx" FullPathHint="Invoices .xlsx" InputMode="Browse">
+                        <ugam:DriveItemArgument.Backup>
+                          <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="Browse">
+                            <usau:BackupSlot.BackupValues>
+                              <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                            </usau:BackupSlot.BackupValues>
+                          </usau:BackupSlot>
+                        </ugam:DriveItemArgument.Backup>
+                      </ugam:DriveItemArgument>
+                    </uga:UploadFilesConnections.Folder>
+                  </uga:UploadFilesConnections>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,314.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uga:UploadFilesConnections AllResults="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FirstResult="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID3}" ManualFolderId="{x:Null}" MultipleFilesToUpload="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConflictResolution="AddSeparate" ConnectionId="a0d12f43-0972-44ce-834d-3cf0361c9632" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByBuilder" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="353.6,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_3" SaveToFolderName="Outvoices .xlsx" UseConnectionService="True">
+                    <uga:UploadFilesConnections.FilesBackup>
+                      <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByBuilder">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
+                            <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[CurrentFile]</InArgument>
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </uga:UploadFilesConnections.FilesBackup>
+                    <uga:UploadFilesConnections.FilesList>
+                      <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+                        <InArgument x:TypeArguments="upr:IResource">[LocalResource.FromPath(CurrentFile.FullName)]</InArgument>
+                      </scg:List>
+                    </uga:UploadFilesConnections.FilesList>
+                    <uga:UploadFilesConnections.Folder>
+                      <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1l1m9lr8jYaEzriHiz3tPIg8p5xjrMeOx" ConnectionKey="f5632c52-1c9a-4c46-aa6d-0288bf2d21de" FriendlyName="Outvoices .xlsx" FullPathHint="Outvoices .xlsx" InputMode="Browse">
+                        <ugam:DriveItemArgument.Backup>
+                          <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="Browse">
+                            <usau:BackupSlot.BackupValues>
+                              <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                            </usau:BackupSlot.BackupValues>
+                          </usau:BackupSlot>
+                        </ugam:DriveItemArgument.Backup>
+                      </ugam:DriveItemArgument>
+                    </uga:UploadFilesConnections.Folder>
+                  </uga:UploadFilesConnections>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachFileX.Body>
+    </ui:ForEachFileX>
   </Sequence>
 </Activity>
